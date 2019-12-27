@@ -6,6 +6,8 @@
 
 # Demo
 
+![demo](https://github.com/shangzhouye/one-legged-2-D-hopping-robot/blob/master/demo.gif?raw=true)
+
 # Overview
 
 This is the final project of ME314 Machine Dynamics (Dec. 2019), NU. This project models a 2D one-legged hopping robot on a flat ground.
