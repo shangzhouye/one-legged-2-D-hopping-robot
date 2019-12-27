@@ -26,7 +26,7 @@ The robot has four degrees of freedom:
 
 # Multi-body mechanics
 
-This [figure (Google drive link)](https://drive.google.com/file/d/1xa7-xilWxB23fbn64DTYG4VTU8FQm_zS/view?usp=sharing) (adapted from [2]) shows the system I'm modelling. This [figure](https://drive.google.com/file/d/1nDyNQ_orU9QV2BczZFm-dugfSChxgbgm/view?usp=sharing) shows the frames I'm using.
+This [figure](https://github.com/shangzhouye/one-legged-2-D-hopping-robot/blob/master/Figures/model.jpg?raw=true) (adapted from [2]) shows the system I'm modelling. This [figure](https://github.com/shangzhouye/one-legged-2-D-hopping-robot/blob/master/Figures/frames.jpg?raw=true) shows the frames I'm using.
 
 Rigid body transformations:
 
