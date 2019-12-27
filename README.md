@@ -18,9 +18,9 @@ A few assumptions were made for simplicity:
 
 The robot has four degrees of freedom: 
 
-- Position of the body CoM ($x, y$)
-- Orientation of the body ($\theta$) - an actuated DoF, a hip rotation torque $\tau$ is applied
-- Leg length ($l$)
+- Position of the body CoM (![$x, y$](https://render.githubusercontent.com/render/math?math=%24x%2C%20y%24))
+- Orientation of the body (![$\theta$](https://render.githubusercontent.com/render/math?math=%24%5Ctheta%24)) - an actuated DoF, a hip rotation torque ![$\tau$](https://render.githubusercontent.com/render/math?math=%24%5Ctau%24) is applied
+- Leg length (![$l$](https://render.githubusercontent.com/render/math?math=%24l%24))
 
 # Multi-body mechanics
 
@@ -28,27 +28,27 @@ This [figure (Google drive link)](https://drive.google.com/file/d/1xa7-xilWxB23f
 
 Rigid body transformations:
 
-$$g_{wa} = \left[\begin{matrix}1 & 0 & 0 & x{\left (t \right )}\\0 & 1 & 0 & y{\left (t \right )}\\0 & 0 & 1 & 0\\0 & 0 & 0 & 1\end{matrix}\right]$$
+![$g_{wa} = \left\[\begin{matrix}1 & 0 & 0 & x{\left (t \right )}\\0 & 1 & 0 & y{\left (t \right )}\\0 & 0 & 1 & 0\\0 & 0 & 0 & 1\end{matrix}\right\]$](https://render.githubusercontent.com/render/math?math=%24g_%7Bwa%7D%20%3D%20%5Cleft%5B%5Cbegin%7Bmatrix%7D1%20%26%200%20%26%200%20%26%20x%7B%5Cleft%20(t%20%5Cright%20)%7D%5C%5C0%20%26%201%20%26%200%20%26%20y%7B%5Cleft%20(t%20%5Cright%20)%7D%5C%5C0%20%26%200%20%26%201%20%26%200%5C%5C0%20%26%200%20%26%200%20%26%201%5Cend%7Bmatrix%7D%5Cright%5D%24)
 
-$$g_{ab} = \left[\begin{matrix}\cos{\left (\theta{\left (t \right )} \right )} & - \sin{\left (\theta{\left (t \right )} \right )} & 0 & 0\\\sin{\left (\theta{\left (t \right )} \right )} & \cos{\left (\theta{\left (t \right )} \right )} & 0 & 0\\0 & 0 & 1 & 0\\0 & 0 & 0 & 1\end{matrix}\right]$$
+![$g_{ab} = \left\[\begin{matrix}\cos{\left (\theta{\left (t \right )} \right )} & - \sin{\left (\theta{\left (t \right )} \right )} & 0 & 0\\\sin{\left (\theta{\left (t \right )} \right )} & \cos{\left (\theta{\left (t \right )} \right )} & 0 & 0\\0 & 0 & 1 & 0\\0 & 0 & 0 & 1\end{matrix}\right\]$](https://render.githubusercontent.com/render/math?math=%24g_%7Bab%7D%20%3D%20%5Cleft%5B%5Cbegin%7Bmatrix%7D%5Ccos%7B%5Cleft%20(%5Ctheta%7B%5Cleft%20(t%20%5Cright%20)%7D%20%5Cright%20)%7D%20%26%20-%20%5Csin%7B%5Cleft%20(%5Ctheta%7B%5Cleft%20(t%20%5Cright%20)%7D%20%5Cright%20)%7D%20%26%200%20%26%200%5C%5C%5Csin%7B%5Cleft%20(%5Ctheta%7B%5Cleft%20(t%20%5Cright%20)%7D%20%5Cright%20)%7D%20%26%20%5Ccos%7B%5Cleft%20(%5Ctheta%7B%5Cleft%20(t%20%5Cright%20)%7D%20%5Cright%20)%7D%20%26%200%20%26%200%5C%5C0%20%26%200%20%26%201%20%26%200%5C%5C0%20%26%200%20%26%200%20%26%201%5Cend%7Bmatrix%7D%5Cright%5D%24)
 
-$$g_{bc} = \left[\begin{matrix}1 & 0 & 0 & - l{\left (t \right )}\\0 & 1 & 0 & 0\\0 & 0 & 1 & 0\\0 & 0 & 0 & 1\end{matrix}\right]$$
+![$g_{bc} = \left\[\begin{matrix}1 & 0 & 0 & - l{\left (t \right )}\\0 & 1 & 0 & 0\\0 & 0 & 1 & 0\\0 & 0 & 0 & 1\end{matrix}\right\]$](https://render.githubusercontent.com/render/math?math=%24g_%7Bbc%7D%20%3D%20%5Cleft%5B%5Cbegin%7Bmatrix%7D1%20%26%200%20%26%200%20%26%20-%20l%7B%5Cleft%20(t%20%5Cright%20)%7D%5C%5C0%20%26%201%20%26%200%20%26%200%5C%5C0%20%26%200%20%26%201%20%26%200%5C%5C0%20%26%200%20%26%200%20%26%201%5Cend%7Bmatrix%7D%5Cright%5D%24)
 
-$$g_{cd} = \left[\begin{matrix}1 & 0 & 0 & 0.25\\0 & 1 & 0 & 0\\0 & 0 & 1 & 0\\0 & 0 & 0 & 1\end{matrix}\right]$$
+![$g_{cd} = \left\[\begin{matrix}1 & 0 & 0 & 0.25\\0 & 1 & 0 & 0\\0 & 0 & 1 & 0\\0 & 0 & 0 & 1\end{matrix}\right\]$](https://render.githubusercontent.com/render/math?math=%24g_%7Bcd%7D%20%3D%20%5Cleft%5B%5Cbegin%7Bmatrix%7D1%20%26%200%20%26%200%20%26%200.25%5C%5C0%20%26%201%20%26%200%20%26%200%5C%5C0%20%26%200%20%26%201%20%26%200%5C%5C0%20%26%200%20%26%200%20%26%201%5Cend%7Bmatrix%7D%5Cright%5D%24)
 
-Specification are listed below. The free length of the spring is $L_{UB}+L_{LB}+\delta$:
+Specification are listed below. The free length of the spring is ![$L_{UB} + L_{LB} + \delta$](https://render.githubusercontent.com/render/math?math=%24L_%7BUB%7D%20%2B%20L_%7BLB%7D%20%2B%20%5Cdelta%24):
 
 - h = 0.25           # leg CG height
-- $m_b$ = 3          # body mass
-- $m_l$ = 0.3        # leg mass
-- $I_b$ = 0.8        # body inertia
-- $I_l$ = 0.008      # leg inertia
-- $L_{UB}$ = 0.25      # Upper body length 
-- $L_{LB}$ = 0.15      # Lower body length 
-- $\delta$ = 0.002   # Spring pre-compression
-- $L_L$ = 0.5        # Rigid length of leg
-- $K_S$ = 2000       # spring stiffness
-- $L_d$ = $L_L$ + $L_{LB}$ # desired leg length
+- ![$m_b$](https://render.githubusercontent.com/render/math?math=%24m_b%24) = 3          # body mass
+- ![$m_l$](https://render.githubusercontent.com/render/math?math=%24m_l%24) = 0.3        # leg mass
+- ![$I_b$](https://render.githubusercontent.com/render/math?math=%24I_b%24) = 0.8        # body inertia
+- ![$I_l$](https://render.githubusercontent.com/render/math?math=%24I_l%24) = 0.008      # leg inertia
+- ![$L_{UB}$](https://render.githubusercontent.com/render/math?math=%24L_%7BUB%7D%24) = 0.25      # Upper body length 
+- ![$L_{LB}$](https://render.githubusercontent.com/render/math?math=%24L_%7BLB%7D%24) = 0.15      # Lower body length 
+- ![$\delta$](https://render.githubusercontent.com/render/math?math=%24%5Cdelta%24) = 0.002   # Spring pre-compression
+- ![$L_L$](https://render.githubusercontent.com/render/math?math=%24L_L%24) = 0.5        # Rigid length of leg
+- ![$K_S$](https://render.githubusercontent.com/render/math?math=%24K_S%24) = 2000       # spring stiffness
+- ![$L_d$](https://render.githubusercontent.com/render/math?math=%24L_d%24) = ![$L_L$](https://render.githubusercontent.com/render/math?math=%24L_L%24) + ![$L_{LB}$](https://render.githubusercontent.com/render/math?math=%24L_%7BLB%7D%24) # desired leg length
 
 # Phases
 
@@ -72,7 +72,7 @@ The motion includes five phases:
 
 - Flight phase 2
 
-    A torque is applied to the hip joint ($\theta$) to rotate the leg forward and prepare for the next jump.
+    A torque is applied to the hip joint (![$\theta$](https://render.githubusercontent.com/render/math?math=%24%5Ctheta%24)) to rotate the leg forward and prepare for the next jump.
 
 # How to run the code
 
