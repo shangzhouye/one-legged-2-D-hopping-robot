@@ -10,7 +10,29 @@
 
 # Overview
 
-This is the final project of ME314 Machine Dynamics (Dec. 2019), NU. This project models a 2D one-legged hopping robot on a flat ground.
+This project models a 2D one-legged hopping robot on a flat ground.
+
+The motion includes five phases:
+
+- Flight phase 1
+
+    The constraint is the length of the leg is at its desired length. Currently the desired length is set at 0.65 m with a pre-compression of 0.002 m. No external force was added at this stage.
+
+- Touch down impact
+
+    The robot experienced a plastic impact. Impact equations include 'change of momentum lies perpendicular to the contact surface' and 'foot arrested to ground'. Velocity is incontinuous. There is energy loss due to the plastic impact.
+
+- Stance phase
+
+    The robot did a passive jump here. The constraint is that the foot is arrested to the ground. The robot took off when the leg length is at its maximun (0.65 m) and hits the mechanical stop.
+
+- Take off impact
+
+    Velocity is incontinuous here again. Impact equations include 'change of momentum lies perpendicular to the contact surface' and 'leg is at its maximum length'. 
+
+- Flight phase 2
+
+    A torque is applied to the hip joint (![$\theta$](https://render.githubusercontent.com/render/math?math=%24%5Ctheta%24)) to rotate the leg forward and prepare for the next jump.
 
 A few assumptions were made for simplicity:
 
@@ -23,6 +45,8 @@ The robot has four degrees of freedom:
 - Position of the body CoM (![$x, y$](https://render.githubusercontent.com/render/math?math=%24x%2C%20y%24))
 - Orientation of the body (![$\theta$](https://render.githubusercontent.com/render/math?math=%24%5Ctheta%24)) - an actuated DoF, a hip rotation torque ![$\tau$](https://render.githubusercontent.com/render/math?math=%24%5Ctau%24) is applied
 - Leg length (![$l$](https://render.githubusercontent.com/render/math?math=%24l%24))
+
+This is my final project of ME314 Machine Dynamics (Dec. 2019), NU. 
 
 # Multi-body mechanics
 
@@ -52,35 +76,16 @@ Specification are listed below. The free length of the spring is ![$L_{UB} + L_{
 - ![$K_S$](https://render.githubusercontent.com/render/math?math=%24K_S%24) = 2000       # spring stiffness
 - ![$L_d$](https://render.githubusercontent.com/render/math?math=%24L_d%24) = ![$L_L$](https://render.githubusercontent.com/render/math?math=%24L_L%24) + ![$L_{LB}$](https://render.githubusercontent.com/render/math?math=%24L_%7BLB%7D%24) # desired leg length
 
-# Phases
-
-The motion includes five phases:
-
-- Flight phase 1
-
-    The constraint is the length of the leg is at its desired length. Currently the desired length is set at 0.65 m with a pre-compression of 0.002 m. No external force was added at this stage.
-
-- Touch down impact
-
-    The robot experienced a plastic impact. Impact equations include 'change of momentum lies perpendicular to the contact surface' and 'foot arrested to ground'. Velocity is incontinuous. There is energy loss due to the plastic impact.
-
-- Stance phase
-
-    The robot did a passive jump here. The constraint is that the foot is arrested to the ground. The robot took off when the leg length is at its maximun (0.65 m) and hits the mechanical stop.
-
-- Take off impact
-
-    Velocity is incontinuous here again. Impact equations include 'change of momentum lies perpendicular to the contact surface' and 'leg is at its maximum length'. 
-
-- Flight phase 2
-
-    A torque is applied to the hip joint (![$\theta$](https://render.githubusercontent.com/render/math?math=%24%5Ctheta%24)) to rotate the leg forward and prepare for the next jump.
-
 # How to run the code
 
 - The code is written in Google Colab (Python 3)
 - Sympy is used for solving symbolic equations
 - It takes a few minutes for the code to run
+
+# Future work
+
+- The impact update at the touch-down and take-off phases are manually set as the initial condition of the next phase. An automatic transfer can be implemented.
+- The main purpose of this project is to make the simulation using lagrangian dynamics. No stable control law is implemented at this stage.
 
 # Reference
 
