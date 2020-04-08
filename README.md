@@ -1,9 +1,5 @@
 # One-legged 2-D Hopping Robot Simulation
 
-*Shangzhou Ye, MSR, Northwestern University*
-
-**Skills: Lagrangian mechanics, impact dynamics, numerical simulations, multi-body systems modeling, Python, variational principles**
-
 # Demo
 
 ![demo](https://github.com/shangzhouye/one-legged-2-D-hopping-robot/blob/master/demo.gif?raw=true)
@@ -20,7 +16,7 @@ The motion includes five phases:
 
 - Touch down impact
 
-    The robot experienced a plastic impact. Impact equations include 'change of momentum lies perpendicular to the contact surface' and 'foot arrested to ground'. Velocity is incontinuous. There is energy loss due to the plastic impact.
+    The robot experienced a plastic impact. Impact equations include 'change of momentum lies perpendicular to the contact surface' and 'foot arrested to ground'. Velocity is discontinuous. There is energy loss due to the plastic impact.
 
 - Stance phase
 
@@ -28,7 +24,7 @@ The motion includes five phases:
 
 - Take off impact
 
-    Velocity is incontinuous here again. Impact equations include 'change of momentum lies perpendicular to the contact surface' and 'leg is at its maximum length'. 
+    Velocity is discontinuous here again. Impact equations include 'change of momentum lies perpendicular to the contact surface' and 'leg is at its maximum length'. 
 
 - Flight phase 2
 
@@ -46,11 +42,9 @@ The robot has four degrees of freedom:
 - Orientation of the body (![$\theta$](https://render.githubusercontent.com/render/math?math=%24%5Ctheta%24)) - an actuated DoF, a hip rotation torque ![$\tau$](https://render.githubusercontent.com/render/math?math=%24%5Ctau%24) is applied
 - Leg length (![$l$](https://render.githubusercontent.com/render/math?math=%24l%24))
 
-This is my final project of ME314 Machine Dynamics (Dec. 2019), NU. 
-
 # Multi-body mechanics
 
-This [figure](https://github.com/shangzhouye/one-legged-2-D-hopping-robot/blob/master/Figures/model.jpg?raw=true) (adapted from [2]) shows the system I'm modelling. This [figure](https://github.com/shangzhouye/one-legged-2-D-hopping-robot/blob/master/Figures/frames.jpg?raw=true) shows the frames I'm using.
+This [figure](https://github.com/shangzhouye/one-legged-2-D-hopping-robot/blob/master/Figures/model.jpg?raw=true) (adapted from [2]) shows the system I'm modeling. This [figure](https://github.com/shangzhouye/one-legged-2-D-hopping-robot/blob/master/Figures/frames.jpg?raw=true) shows the frames I'm using.
 
 Rigid body transformations:
 
@@ -85,7 +79,7 @@ Specification are listed below. The free length of the spring is ![$L_{UB} + L_{
 # Future work
 
 - The impact update at the touch-down and take-off phases are manually set as the initial condition of the next phase. An automatic transfer can be implemented.
-- The main purpose of this project is to make the simulation using lagrangian dynamics. No stable control law is implemented at this stage.
+- The main purpose of this project is to make the simulation using Lagrangian dynamics. No stable control law is implemented at this stage.
 
 # Reference
 
